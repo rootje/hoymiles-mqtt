@@ -109,7 +109,7 @@ def publish(client, topic, message):
     result = client.publish(topic, message)
     status = result[0]
     if status == 0:
-        print(f"Send `{message}` to topic `{topic}`")
+        print(f"Sent `{message}` to topic `{topic}`")
     else:
         print(f"Failed to send message to topic {topic}")
 
