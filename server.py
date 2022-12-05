@@ -106,7 +106,7 @@ def connect_mqtt(broker, port, mqtt_username, mqtt_password):
     return client
 
 def publish(client, topic, message): 
-    result = client.publish(topic, message)
+    result = client.publish(topic, message, retain=True)
     status = result[0]
     if status == 0:
         print(f"Sent `{message}` to topic `{topic}`")
