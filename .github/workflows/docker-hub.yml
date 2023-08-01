@@ -56,5 +56,6 @@ jobs:
         with:
           context: "{{defaultContext}}"
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          #tags: ${{ steps.meta.outputs.tags }}
+          tags: latest, ${{github.run_number }}
           labels: ${{ steps.meta.outputs.labels }}
