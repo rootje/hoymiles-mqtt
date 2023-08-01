@@ -113,7 +113,7 @@ def publish(client, topic, message):
     else:
         print(f"Failed to send message to topic {topic}")
 
-client = connect_mqtt(MQTT_HOST_ADDRESS, MQTT_PORT, MQTT_PASSWORD, MQTT_PASSWORD)
+client = connect_mqtt(MQTT_HOST_ADDRESS, MQTT_PORT, MQTT_USERNAME, MQTT_PASSWORD)
 client.loop_start()
 
 hoymiles = Energy(USERNAME,USERPASSWORD)
