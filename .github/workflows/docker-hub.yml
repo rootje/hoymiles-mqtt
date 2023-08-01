@@ -57,6 +57,5 @@ jobs:
           context: "{{defaultContext}}"
           push: true
           #tags: ${{ steps.meta.outputs.tags }}
-          #tags: latest, ${{github.run_number }}
-          tags: latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/hoymiles-mqtt:${{github.run_number}} , ${{ secrets.DOCKER_USERNAME }}/hoymiles-mqtt:latest
           labels: ${{ steps.meta.outputs.labels }}
