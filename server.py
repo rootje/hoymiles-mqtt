@@ -125,7 +125,8 @@ while 1<2:
 
     current_time = datetime.now().strftime("%D %H:%M:%S")
     
-    if lastUpdate != hoymiles.last_update or energytoday != hoymiles.today:
+    #if lastUpdate != hoymiles.last_update or energytoday != hoymiles.today:
+    if energytoday != hoymiles.today:
         print ("Update at: ", current_time)
         publish(client, "hoymiles/energy_today", hoymiles.today)
         publish(client, "hoymiles/energy_this_month", hoymiles.this_month)
@@ -140,12 +141,12 @@ while 1<2:
         print ("No new information at: ", current_time)
     
 
-    thisUpdateTime = datetime.now()
-    followingUpdateTime = datetime.now() + timedelta(seconds=API_FREQUENCY_CHECK)
+    #thisUpdateTime = datetime.now()
+    #followingUpdateTime = datetime.now() + timedelta(seconds=API_FREQUENCY_CHECK)
     
-    if thisUpdateTime.day != followingUpdateTime.day:
-        print ("Following update will be after midnight. Setting day-total to 0.")
-        publish(client, "hoymiles/energy_today", "0")
+    #if thisUpdateTime.day != followingUpdateTime.day:
+    #    print ("Following update will be after midnight. Setting day-total to 0.")
+    #    publish(client, "hoymiles/energy_today", "0")
         
     time.sleep(API_FREQUENCY_CHECK)
 
