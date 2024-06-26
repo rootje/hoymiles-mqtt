@@ -48,10 +48,15 @@ In the configuration.yaml file just add a couple of sensors that this program pu
     icon: mdi:solar-power
 ```
 
-To use the above sensor in the Energy dashboard add
+If you use the energy dashboard, create and use the sensor below. The "state-class: total" attribute makes the sensor visible in the configuration of the energy dashboard. 
 
 ```
-    state_class: total
+    - state_topic: "hoymiles/energy_today"
+      name: hoymiles_energy_today
+      state_class: total
+      unit_of_measurement: "Wh"
+      device_class: energy
+      icon: mdi:solar-power
 ```
 
 But of course you can use this program/container for other purposes!
