@@ -41,20 +41,20 @@ class Energy:
         self.lifetime_energy = ""
         self.current_power = ""
         self.last_update = ""
-        self.cookie = self.authentication_cookie() 
+        self.authorizationheader = self.authentication_header() 
         self.update()
 
-    def authentication_cookie(self):
-        response_auth = json.loads(requests.post("https://global.hoymiles.com/platform/api/gateway/iam/auth_login", data={'user_name': self.username, 'password': self.password}).text)
+    def authentication_header(self):
+        print ()
+        response_auth = json.loads(requests.post("https://neapi.hoymiles.com/iam/pub/0/auth/login", json={'user_name': self.username, 'password': self.password}).text)
         token = response_auth["data"]["token"]
-        headers = {"hm_token": token + "; Path=/; Expires=Sat, 18 Mar 2023 19:00:41 GMT;"}
+        headers = {"Authorization": token}
         self.cookie = headers
         print ("Authentication token received!")
         return headers
 
     def get_sid(self):
-        
-        response = json.loads(requests.post("https://global.hoymiles.com/platform/api/gateway/pvm/station_select_by_page", cookies=self.cookie).text)
+        response = json.loads(requests.post("https://neapi.hoymiles.com/pvm/api/0/station/select_by_page", headers=self.authorizationheader, json={'page': 1, 'page_size': 2}).text)
         
         if response["message"] == "success":
             site_list = response["data"]["list"]
@@ -74,7 +74,7 @@ class Energy:
         if sid == False:
             return False
         data = { "sid": sid } 
-        response = json.loads(requests.post("https://global.hoymiles.com/platform/api/gateway/pvm-data/data_count_station_real_data", cookies=self.cookie, json=data).text)
+        response = json.loads(requests.post("https://neapi.hoymiles.com/pvm-data/api/0/station/data/count_station_real_data", headers=self.authorizationheader, json=data).text)
         if response["message"] == "success":
             self.today = str(response["data"]["today_eq"])
             self.this_month = str(response["data"]["month_eq"])
