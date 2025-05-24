@@ -12,7 +12,7 @@ import os
 
 print ("Starting program")
 
-#load .env variables
+#load .env variables from .env file
 load_dotenv()
 
 USERNAME = os.getenv('USERNAME', "")
