@@ -1,6 +1,3 @@
-from ast import While
-from dataclasses import dataclass
-from email import header
 from paho.mqtt import client as mqtt_client
 from datetime import datetime
 from datetime import timedelta
