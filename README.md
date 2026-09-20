@@ -1,3 +1,4 @@
+Because there is a HomeAssistant integration for Hoymiles, I've archived this project.
 # Hoymiles-mqtt
 
 This program will connect to the Hoymiles webservice and gather the energy information from it. The program is configurable through a .env configuration file. Use the following parameters in order to configure:
